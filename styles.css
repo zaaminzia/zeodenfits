@@ -33,12 +33,12 @@ nav ul {
 
 nav li {
     display: inline;
-    margin-left: 200px;
+    margin-left: 20px;
 }
 
 nav a {
     text-decoration: none;
-    color: Yellow;
+    color: white;
     font-weight: bold;
 }
 
