@@ -51,11 +51,13 @@ nav a {
 }
 
 .hero h2 {
+    color: black;
     font-size: 3em;
     margin-bottom: 20px;
 }
 
 .hero p {
+    color: black;
     font-size: 1.2em;
     margin-bottom: 30px;
 }
