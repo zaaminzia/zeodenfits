@@ -5,9 +5,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sample product data
     const products = [
-        { id: 1, name: "Awesome Hoodie", price: 29.99 },
-        { id: 2, name: "Cool T-Shirt", price: 19.99 },
-        { id: 3, name: "Funky Jacket", price: 39.99 },
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },    
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },
     ];
 
     const cart = [];
@@ -45,4 +62,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         cartTotalElement.textContent = total.toFixed(2);
     }
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleTheme = document.getElementById('toggle-theme');
+    const themeLabel = document.getElementById('theme-label');
+
+    toggleTheme.addEventListener('change', function () {
+        document.body.classList.toggle('dark-theme');
+
+        // Update the label text
+        themeLabel.textContent = toggleTheme.checked ? 'Night' : 'Day';
+    });
 });
