@@ -13,7 +13,7 @@ body {
 }
 
 header {
-    background-color: #ff0000;
+    background-color: black;
     color: white;
     padding: 1em 0;
 }
@@ -68,35 +68,6 @@ nav a {
     text-decoration: none;
     font-weight: bold;
 }
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 50px 0;
-}
-
-.product {
-    background-color: white;
-    border: 1px solid #ddd;
-    margin: 10px;
-    padding: 20px;
-    text-align: center;
-    width: 200px;
-}
-
-.product h3 {
-    margin: 0 0 10px;
-}
-
-.product button {
-    background-color: #333;
-    color: white;
-    padding: 0.5em 1em;
-    border: none;
-    cursor: pointer;
-}
-
 .cart {
     background-color: #333;
     color: white;
@@ -122,7 +93,7 @@ footer {
     color: white;
     text-align: center;
     padding: 0px 0;
-    position: absolute;
+    position: fixed ;
     bottom: 0;
     width: 100%;
 }
