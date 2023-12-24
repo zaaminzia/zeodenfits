@@ -63,3 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
         cartTotalElement.textContent = total.toFixed(2);
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleTheme = document.getElementById('toggle-theme');
+    const themeLabel = document.getElementById('theme-label');
+
+    toggleTheme.addEventListener('change', function () {
+        document.body.classList.toggle('dark-theme');
+
+        // Update the label text
+        themeLabel.textContent = toggleTheme.checked ? 'Night' : 'Day';
+    });
+});
