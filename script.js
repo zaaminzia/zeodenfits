@@ -26,9 +26,8 @@ const products = [
         { id: 4, name: "Sample Hoodie", price: 9.99 },
         { id: 5, name: "Sample Hoodie", price: 9.99 },        
     ];
-=======
 const productContainer = document.getElementById('productContainer');
->>>>>>> 8da2f5be01d0097d644528e1078f19a644f1670d
+
 
 // Loop through the products and create product cards
 products.forEach(product => {
