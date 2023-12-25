@@ -25,6 +25,12 @@ body {
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Ubuntu', sans-serif;
+=======
+.container {
+    width: 80%;
+    height: 67px;
+    margin: auto;
+
 }
 nav{
   position: fixed;
@@ -133,8 +139,12 @@ h1{
     cursor: pointer;
 }
 .hero {
+
     
     color: var(--main-accent-color);
+=======
+    color:whitesmoke;
+
     text-align: center;
     padding: 100px 0;
     
@@ -317,4 +327,57 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(26px);
+
 }
+
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+#theme-label {
+    margin-left: 10px;
+    font-size: 14px;
+}
+@media only screen and (max-width: 600px) {
+    header {
+        padding: -1em 0; /* Adjusted padding for smaller screens */
+    }
+
+    .container {
+        width: 97%;
+        height: 55px;
+        margin: auto;
+    }
+
+    .hero {
+        color: black;
+        padding: 217px 0; /* Adjusted padding for smaller screens */
+    }
+
+    .hero h2 {
+        font-size: 2em; /* Adjusted font size for smaller screens */
+    }
+
+    .hero p {
+        font-size: 1em; /* Adjusted font size for smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 8px 16px; /* Adjusted button padding for smaller screens */
+    }
+}
+
