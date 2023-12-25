@@ -9,7 +9,7 @@ body {
 
 .container {
     width: 80%;
-    height: 55px;
+    height: 67px;
     margin: auto;
 }
 
@@ -45,7 +45,7 @@ nav a {
 
 
 .hero {
-    color: white;
+    color:whitesmoke;
     text-align: center;
     padding: 100px 0;
 }
@@ -171,4 +171,25 @@ input:checked + .slider:before {
     margin-left: 10px;
     font-size: 14px;
 }
+@media only screen and (max-width: 600px) {
+    header {
+        padding: -1em 0; /* Adjusted padding for smaller screens */
+    }
 
+    .hero {
+        padding: 217px 0; /* Adjusted padding for smaller screens */
+    }
+
+    .hero h2 {
+        font-size: 2em; /* Adjusted font size for smaller screens */
+    }
+
+    .hero p {
+        font-size: 1em; /* Adjusted font size for smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 8px 16px; /* Adjusted button padding for smaller screens */
+    }
+}
