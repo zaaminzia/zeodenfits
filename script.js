@@ -1,8 +1,8 @@
-const products = [
-    // ... (Add image URLs for other products)
-];
+document.addEventListener("DOMContentLoaded", function () {
+    const productsContainer = document.querySelector(".products");
+    const cartItemsContainer = document.querySelector(".cart ul");
+    const cartTotalElement = document.querySelector("#cart-total");
 
- HEAD
     // Sample product data
     const products = [
         { id: 1, name: "Sample Hoodie", price: 9.99 },
@@ -12,59 +12,53 @@ const products = [
         { id: 5, name: "Sample Hoodie", price: 9.99 },
         { id: 1, name: "Sample Hoodie", price: 9.99 },
         { id: 2, name: "Sample Hoodie", price: 9.99 },
-        { id: 3, name: "Sample Hoodie", price: 9.99 },
-        { id: 4, name: "Sample Hoodie", price: 9.99 },
-        { id: 5, name: "Sample Hoodie", price: 9.99 },
-        { id: 1, name: "Sample Hoodie", price: 9.99 },
-        { id: 2, name: "Sample Hoodie", price: 9.99 },
-        { id: 3, name: "Sample Hoodie", price: 9.99 },
-        { id: 4, name: "Sample Hoodie", price: 9.99 },
-        { id: 5, name: "Sample Hoodie", price: 9.99 },
-        { id: 1, name: "Sample Hoodie", price: 9.99 },
-        { id: 2, name: "Sample Hoodie", price: 9.99 },
-        { id: 3, name: "Sample Hoodie", price: 9.99 },
-        { id: 4, name: "Sample Hoodie", price: 9.99 },
-        { id: 5, name: "Sample Hoodie", price: 9.99 },        
+
     ];
-const productContainer = document.getElementById('productContainer');
 
+    const cart = [];
 
-// Loop through the products and create product cards
-products.forEach(product => {
-    const productCard = document.createElement('div');
-    productCard.classList.add('product-card');
+    // Display products
+    products.forEach(product => {
+        const productElement = document.createElement("div");
+        productElement.classList.add("product");
+        productElement.innerHTML = `
+            <h3>${product.name}</h3>
+            <p>$${product.price.toFixed(2)}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+        `;
+        productsContainer.appendChild(productElement);
+    });
 
-    // Create an image element with a fixed size
-    const productImage = document.createElement('img');
-    productImage.src = product.image;
-    productImage.alt = product.name;
-    productImage.classList.add('product-image');
+    // Add to cart function
+    window.addToCart = function (productId) {
+        const product = products.find(p => p.id === productId);
+        cart.push(product);
+        updateCart();
+    };
 
-    // You would typically have an image here, but for simplicity, using text
-    productCard.appendChild(productImage);
+    // Update cart UI
+    function updateCart() {
+        cartItemsContainer.innerHTML = "";
+        let total = 0;
 
-    productCard.innerHTML += `
-        <p>${product.name}</p>
-        <p>Price: $${product.price}</p>
-        <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
-    `;
+        cart.forEach(item => {
+            const cartItemElement = document.createElement("li");
+            cartItemElement.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+            cartItemsContainer.appendChild(cartItemElement);
 
-    productContainer.appendChild(productCard);
+            total += item.price;
+        });
+        cartTotalElement.textContent = total.toFixed(2);
+    }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleTheme = document.getElementById('toggle-theme');
+    const themeLabel = document.getElementById('theme-label');
 
-// Function to simulate adding to cart
-function addToCart(productId) {
-    alert(`Product with ID ${productId} added to cart!`);
-}
-  let nav = document.querySelector("nav");
-    window.onscroll = function() {
-      if(document.documentElement.scrollTop > 20){
-        nav.classList.add("sticky");
-      }else {
-        nav.classList.remove("sticky");
-      }
-    }
-    function toggleSidebar() {
-        const mobileSidebar = document.getElementById('mobileSidebar');
-        mobileSidebar.style.width = mobileSidebar.style.width === '250px' ? '0' : '250px';
-    }
+    toggleTheme.addEventListener('change', function () {
+        document.body.classList.toggle('dark-theme');
+
+        // Update the label text
+        themeLabel.textContent = toggleTheme.checked ? 'Night' : 'Day';
+    });
+});
