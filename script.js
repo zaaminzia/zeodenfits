@@ -1,25 +1,34 @@
 const products = [
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 2, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 1, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
     // ... (Add image URLs for other products)
 ];
 
+ HEAD
+    // Sample product data
+    const products = [
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },
+        { id: 1, name: "Sample Hoodie", price: 9.99 },
+        { id: 2, name: "Sample Hoodie", price: 9.99 },
+        { id: 3, name: "Sample Hoodie", price: 9.99 },
+        { id: 4, name: "Sample Hoodie", price: 9.99 },
+        { id: 5, name: "Sample Hoodie", price: 9.99 },        
+    ];
+=======
 const productContainer = document.getElementById('productContainer');
+>>>>>>> 8da2f5be01d0097d644528e1078f19a644f1670d
 
 // Loop through the products and create product cards
 products.forEach(product => {
