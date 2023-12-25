@@ -176,7 +176,14 @@ input:checked + .slider:before {
         padding: -1em 0; /* Adjusted padding for smaller screens */
     }
 
+    .container {
+        width: 97%;
+        height: 55px;
+        margin: auto;
+    }
+
     .hero {
+        color: black;
         padding: 217px 0; /* Adjusted padding for smaller screens */
     }
 
