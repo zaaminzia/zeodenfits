@@ -68,22 +68,3 @@ function addToCart(productId) {
         const mobileSidebar = document.getElementById('mobileSidebar');
         mobileSidebar.style.width = mobileSidebar.style.width === '250px' ? '0' : '250px';
     }
-
-    function toggleMode() {
-        const modeSwitch = document.getElementById('modeSwitch');
-        const root = document.documentElement;
-
-        if (modeSwitch.checked) {
-            // Night mode
-            root.style.setProperty('--main-bg-color', '#111');
-            root.style.setProperty('--main-text-color', '#fff');
-            root.style.setProperty('--main-accent-color', 'white');
-            root.style.setProperty('--main-accent-text-color', 'black');
-        } else {
-            // Day mode
-            root.style.setProperty('--main-bg-color', '#f4f4f4');
-            root.style.setProperty('--main-text-color', '#333');
-            root.style.setProperty('--main-accent-color', 'black');
-            root.style.setProperty('--main-accent-text-color', 'white');
-        }
-    }
