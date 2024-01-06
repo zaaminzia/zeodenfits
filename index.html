@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +8,29 @@
     <link rel="stylesheet" href="styles.css">
     <title>Zeoden Fits- Inspired Apparel</title>
 </head>
-<body background="img/background.jpg">
+<body>
     <header>
-        <div class="container">
-            <h1>Zeoden Fits</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Service</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <div class="nav-content">
+              <div class="logo">
+                <a href="#">ZeodenFits.</a>
+              </div>
+              <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Services</a></li>
+              </ul>
+            </div>
+            <div class="switch-container">
+                <label class="switch">
+                    <input type="checkbox" id="modeSwitch" onclick="toggleMode()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+          </nav>
     </header>
+
     <section class="hero">
         <div class="container">
             <h2>Express Yourself with Zeoden Fits</h2>
@@ -29,9 +40,9 @@
     </section>
 
     <footer>
-        <div class="container">
            <h5><p>&copy; 2024 Zeoden Fits. All rights reserved.</p></h5>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

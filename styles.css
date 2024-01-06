@@ -1,53 +1,143 @@
+:root {
+    --main-bg-color: #f4f4f4;
+    --main-text-color: #333;
+    --main-accent-color: black;
+    --main-accent-text-color: white;
+}
+
 body {
-    background-size: cover ;
+    background-size: cover;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    position: relative  ;
+    background-color: var(--main-bg-color);
+    position: relative;
+    color: var(--main-text-color);
+    padding-bottom: 100px; /* Adjust this value based on the height of your footer */
+    
 }
 
+/* Google Font Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.4s ease;
+  background-color: var( --main-accent-color);
+}
+nav.sticky{
+  padding: 15px 20px;
+  background: var(--main-accent-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo a{
+
+  font-weight: 500;
+  font-size: 35px;
+  color: var(--main-accent-text-color);
+}
+nav.sticky .logo a{
+  color: var(--main-accent-text-color);
+}
+.nav-content .nav-links{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 8px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: var(--main-accent-text-color);
+  font-size: 22px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #4070f4;
+ }
+ nav.sticky .nav-links li a{
+   color: var(--main-accent-text-color);
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: var(--main-accent-color);
+}
+
+h2{
+  font-size: 30px;
+  margin-bottom: 6px;
+  color: var(--main-accent-color);
+}
+.text{
+  text-align: justify;
+  padding: 40px 80px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+}
 .container {
     width: 80%;
-    height: 67px;
+    height: 55px;
     margin: auto;
 }
 
-header {
-    background-color: black;
-    color: white;
-    padding: 1em 0;
-}
 
-header h1 {
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--main-accent-color);
+    color: var(--main-accent-text-color);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+h1{
+    float: left;
+}
+ .cart h2, #cart-items li {
     margin: 0;
 }
-nav {
-    float: right;
+
+
+
+.btn, .cart {
+    background-color: var(--main-text-color);
+    color: var(--main-accent-text-color);
+    padding: 10px 20px;
+    border-radius: 10%;
 }
-
-nav ul {
-    list-style: none;
-    margin: auto;
-    padding: 0;
+.btn:hover {
+    background-color: var(--main-accent-text-color);
+    color: var(--main-accent-color);
+    cursor: pointer;
 }
-
-nav li {
-    display: inline;
-    margin-left: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-
 .hero {
-    color: black;
+    
+    color: var(--main-accent-color);
     text-align: center;
     padding: 100px 0;
+    
 }
 
 .hero h2 {
@@ -60,26 +150,6 @@ nav a {
     margin-bottom: 30px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.cart {
-    background-color: #333;
-    color: white;
-    padding: 50px 0;
-    position: relative;
-}
-
-.cart h2 {
-    margin: 0 0 20px;
-}
-
 #cart-items {
     list-style: none;
     padding: 0;
@@ -89,18 +159,121 @@ nav a {
     margin-bottom: 10px;
 }
 
-footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 0px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.cart {
+    background-color: var(--main-text-color);
+    color: var(--main-accent-text-color);
+    padding: 50px 0;
+    position: relative;
 }
-/* Add your existing CSS styles here */
 
-/* Toggle Switch Styles */
+.product-container {
+    display: flex;
+    font-size: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center items horizontally */
+}
+
+.product-card {
+    border: 5px solid var(--main-accent-color);
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+
+}
+.product-card:hover {
+    transform: scale(1.1); /* Increase the size on hover */
+    transition: 0.4s ease;
+}
+.product-image {
+    width: 100px; /* Fixed width for the product image */
+    height: 100px; /* Fixed height for the product image */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    nav{
+        position: relative;
+    }
+    nav .nav-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        margin-top: 20px;
+        display: none;
+    }
+    nav .logo a{
+        float: center;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5em;
+        color: var(--main-accent-text-color);
+    }
+    .hero {
+        margin: 0;
+        position: fixed;
+        top: 40%;
+        transform: translateY(-50%);
+           
+    }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: var(--main-accent-color);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 999;
+    }
+
+    .sidebar a {
+        padding: 15px 20px;
+        text-decoration: none;
+        font-size: 1.2em;
+        color: #fff;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #555;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.5em;
+        cursor: pointer;
+        color: #fff;
+        
+    }
+    .switch-container {
+        position: fixed;
+    }
+}
+.switch-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.switch-label {
+    margin-right: 10px;
+    color: var(--main-text-color);
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -122,8 +295,8 @@ footer {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    transition: 0.4s;
+    border-radius: 34px;
 }
 
 .slider:before {
@@ -133,70 +306,15 @@ footer {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    background-color: #fff;
+    transition: 0.4s;
+    border-radius: 50%;
 }
 
 input:checked + .slider {
     background-color: #2196F3;
 }
 
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
 input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
     transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-.toggle-container {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-}
-
-#theme-label {
-    margin-left: 10px;
-    font-size: 14px;
-}
-@media only screen and (max-width: 600px) {
-    header {
-        padding: -1em 0; /* Adjusted padding for smaller screens */
-    }
-
-    .container {
-        width: 97%;
-        height: 55px;
-        margin: auto;
-    }
-
-    .hero {
-        color: black;
-        padding: 217px 0; /* Adjusted padding for smaller screens */
-    }
-
-    .hero h2 {
-        font-size: 2em; /* Adjusted font size for smaller screens */
-    }
-
-    .hero p {
-        font-size: 1em; /* Adjusted font size for smaller screens */
-        margin-bottom: 20px;
-    }
-
-    .btn {
-        padding: 8px 16px; /* Adjusted button padding for smaller screens */
-    }
 }
