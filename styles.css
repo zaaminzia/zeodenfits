@@ -13,6 +13,7 @@ body {
     background-color: var(--main-bg-color);
     position: relative;
     color: var(--main-text-color);
+    background-image: url("img/background.jpg");
     padding-bottom: 100px; /* Adjust this value based on the height of your footer */
     
 }
