@@ -1,48 +1,27 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Zeoden Fits- Inspired Apparel</title>
+    <title>Enter Your Information</title>
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-content">
-              <div class="logo">
-                <a href="#">ZeodenFits</a>
-              </div>
-              <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#">Services</a></li>
-              </ul>
-            </div>
-            <div class="switch-container">
-                <label class="switch">
-                    <input type="checkbox" id="modeSwitch" onclick="toggleMode()">
-                    <span class="slider"></span>
-                </label>
-            </div>
-          </nav>
-    </header>
+    <div class="form-container">
+        <h2>Please Enter Your Information</h2>
+        <form id="entryForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
 
-    <section class="hero">
-        <div class="container">
-            <h2>Express Yourself with Zeoden Fits</h2>
-            <p>Discover unique and quirky designs that speak to your passions.</p>
-            <a href="shop.html" class="btn">Shop Now</a>
-        </div>
-    </section>
+            <!-- Add more fields as needed -->
 
-    <footer>
-           <h5><p>&copy; 2024 Zeoden Fits. All rights reserved.</p></h5>
-        </div>
-    </footer>
-    <script src="script.js"></script>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="form.js"></script>
 </body>
 </html>
