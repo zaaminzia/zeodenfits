@@ -15,7 +15,7 @@ const products = [
     { id: 14, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
     { id: 15, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
     { id: 16, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
-    { id: 17, name: "Sample Hoodie", price: 9.99, image: "https://via.placeholder.com/100" },
+    { id: 17, name: "Sample Hoodie", price: 9.99, image: "https://www.sayingsplus.com/wp-content/uploads/2021/06/Naruto-Itachi-Uchiha-3D-Printed-HoodieZipper-Hoodie-800x800.jpg" },
     // ... (Add image URLs for other products)
   ];
   
