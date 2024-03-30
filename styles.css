@@ -13,7 +13,6 @@ body {
     background-color: var(--main-bg-color);
     position: relative;
     color: var(--main-text-color);
-    background-image: url("img/background.jpg");
     padding-bottom: 100px; /* Adjust this value based on the height of your footer */
     
 }
@@ -27,44 +26,71 @@ body {
   text-decoration: none;
   font-family: 'Ubuntu', sans-serif;
 }
-nav{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  transition: all 0.4s ease;
-  background-color: var( --main-accent-color);
+/* Reset default margin and padding */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
 }
-nav.sticky{
-  padding: 15px 20px;
-  background: var(--main-accent-color);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-nav .nav-content{
-  height: 100%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-nav .logo a{
 
-  font-weight: 500;
-  font-size: 35px;
-  color: var(--main-accent-text-color);
+/* Set box-sizing to border-box for easier layout control */
+* {
+    box-sizing: border-box;
 }
-nav.sticky .logo a{
-  color: var(--main-accent-text-color);
+
+/* Set default font family and size */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
 }
-.nav-content .nav-links{
-  display: flex;
+
+/* Apply a gradient background */
+body {
+    background: linear-gradient(to bottom, #4CAF50, #2196F3);
 }
+
+/* Create a container with centered content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #fff;
+}
+
+/* Apply a box shadow to the container */
+.container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Create a header with a background color */
+header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style the header text */
+header h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Create a navigation menu */
+nav {
+    background-color: #555;
+    padding: 10px;
+}
+
+ul.nav-links{
+    display: flex;
+}
+
 .nav-content .nav-links li{
   list-style: none;
   margin: 0 8px;
 }
+
+
+
  .nav-links li a{
   text-decoration: none;
   color: var(--main-accent-text-color);
@@ -79,42 +105,90 @@ nav.sticky .logo a{
  nav.sticky .nav-links li a{
    color: var(--main-accent-text-color);
    transition: all 0.4s ease;
-}
- nav.sticky .nav-links li a:hover{
-  color: var(--main-accent-color);
-}
-
-h2{
-  font-size: 30px;
-  margin-bottom: 6px;
-  color: var(--main-accent-color);
-}
-.text{
-  text-align: justify;
-  padding: 40px 80px;
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
-}
-.container {
-    width: 80%;
-    height: 55px;
-    margin: auto;
+ }
+/* Style navigation links */
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
 }
 
+/* Apply hover effect to navigation links */
+.nav-links a:hover {
+    background-color: #444;
+}
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--main-accent-color);
-    color: var(--main-accent-text-color);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Create sections with padding and margin */
+main .section {
     padding: 20px;
+    margin: 20px 0;
+}
+
+/* Apply background color and border radius to sections */
+main .section {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+/* Style headings within sections */
+main .section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style paragraphs within sections */
+main .section p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.about-image {
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: 20px; /* Adjust margin between image and text */
+}
+
+.about-text {
+    flex: 1; /* Take remaining space beside the image */
+}
+
+
+.about-text p {
+    margin-top: 10px; /* Adjust spacing between heading and paragraph */
+}
+
+
+#about-image-1 {
+    background-image: url('img/uchiha.png'); /* Replace 'image1.jpg' with your image path */
+}
+
+/* Create a footer with centered text */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Apply hover effect to footer links */
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
 }
 h1{
-    float: left;
+    text-align: center;
 }
  .cart h2, #cart-items li {
     margin: 0;

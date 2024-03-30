@@ -1,36 +1,38 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Zeoden Fits- Inspired Apparel</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-content">
-              <div class="logo">
-                <a href="#">ZeodenFits</a>
-              </div>
-              <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#">Services</a></li>
-              </ul>
-            </div>
-            <div class="switch-container">
-                <label class="switch">
-                    <input type="checkbox" id="modeSwitch" onclick="toggleMode()">
-                    <span class="slider"></span>
-                </label>
-            </div>
-          </nav>
-    </header>
 
+<header class="header">
+    <div class="container">
+        <h1>ZeodenFits</h1>
+    </div>
+</header>
+
+<nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Services</a></li>
+    </ul>
+    </div>
+
+    <div class="switch-container">
+        <label class="switch">
+            <input type="checkbox" id="modeSwitch" onclick="toggleMode()">
+            <span class="slider"></span>
+        </label>
+    </div>
+</nav>
+
+<main>
     <section class="hero">
         <div class="container">
             <h2>Express Yourself with Zeoden Fits</h2>
@@ -39,10 +41,33 @@
         </div>
     </section>
 
-    <footer>
-           <h5><p>&copy; 2024 Zeoden Fits. All rights reserved.</p></h5>
+    <!-- Add more sections as needed -->
+    <section class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-image" id="about-image-1"></div>
+            <div class="about-text">   
+                <p>Welcome to Zeoden Fits, where we offer inspired apparel that allows you to express yourself. Learn more about our mission, values, and the team behind the brand.</p>
+            </div> 
         </div>
-    </footer>
-    <script src="script.js"></script>
+    </section>
+<br>
+<br>
+<br>
+<br>
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p>Discover the range of services we provide to our customers, from personalized styling consultations to fast and reliable shipping options.</p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
