@@ -40,8 +40,7 @@ const products = [
         <p>Price: $${product.price}</p>
         <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
     `;
-  
-    productContainer.appendChild(productCard);
+       productContainer.appendChild(productCard);
   });
   
   // Function to simulate adding to cart
