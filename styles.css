@@ -198,7 +198,7 @@ main .section p {
 
 
 #about-image-1 {
-    background-image: url('uchiha.png'); /* Replace 'image1.jpg' with your image path */
+    background-image: url('img/uchiha.png'); /* Replace 'image1.jpg' with your image path */
 }
 
 /* Create a footer with centered text */
