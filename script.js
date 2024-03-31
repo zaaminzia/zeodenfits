@@ -27,20 +27,24 @@ const products = [
     productCard.classList.add('product-card');
   
     // Create an image element with a fixed size
-    const productImage = document.createElement('img');
-    productImage.src = product.image;
-    productImage.alt = product.name;
-    productImage.classList.add('product-image');
+    if(product.image){
+      const productImage = document.createElement('img');
+      productImage.src = product.image;
+      productImage.alt = product.name;
+      productImage.classList.add('product-image');
+      // You would typically have an image here, but for simplicity, using text
+      productCard.appendChild(productImage);
+   }
+    
   
-    // You would typically have an image here, but for simplicity, using text
-    productCard.appendChild(productImage);
-  
+    
     productCard.innerHTML += `
         <p>${product.name}</p>
         <p>Price: $${product.price}</p>
         <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
     `;
-       productContainer.appendChild(productCard);
+      productContainer.appendChild(productCard);
+    
   });
   
   // Function to simulate adding to cart
