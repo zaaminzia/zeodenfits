@@ -115,3 +115,24 @@ button:hover {
   margin-top: 30px;
   color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+.wrapper {
+  width: 100%;
+  padding: 20px;
+}
+.navbar {
+  flex-direction: column;
+  align-items: center;
+}
+.nav-links {
+  flex-direction: column;
+  align-items: center;
+}
+.nav-links li {
+  margin: 10px 0;
+}
+button {
+  padding: 12px 100px;
+}
+}
