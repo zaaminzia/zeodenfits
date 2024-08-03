@@ -1,3 +1,4 @@
+ 
 // Function to handle form submission and redirection
 function submitForm() {
     // You can add validation or AJAX submission logic here
