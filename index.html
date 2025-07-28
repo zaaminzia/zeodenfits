@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeoden Fits | Sign Up</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="form.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -66,6 +66,17 @@
         
         .pulse {
             animation: pulse 2s infinite;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-field {
+            border-color: #ff6b6b !important;
         }
 
         .image-slider {
@@ -165,7 +176,7 @@
                 <h2 class="text-2xl font-semibold text-white mb-1">Create Account</h2>
                 <p class="text-white text-opacity-80 mb-6">Join our premium fitness community</p>
                 
-                <form class="space-y-4" action="home.html" method="GET">
+                <form id="signupForm" class="space-y-4" action="home.html" method="GET">
                     <div class="flex space-x-4">
                         <div class="w-1/2">
                             <label class="block text-white text-sm font-medium mb-1">First Name</label>
@@ -174,15 +185,17 @@
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <i class="fas fa-user text-white text-opacity-70"></i>
                                 </div>
+                                <div class="error-message">Please enter your first name</div>
                             </div>
                         </div>
                         <div class="w-1/2">
                             <label class="block text-white text-sm font-medium mb-1">Last Name</label>
                             <div class="relative">
                                 <input type="text" class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-white placeholder-opacity-70 focus:outline-none" placeholder="Doe">
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <div class="absolute inset-y-0 right-0 flex items center pr-3 pointer-events-none">
                                     <i class="fas fa-user text-white text-opacity-70"></i>
                                 </div>
+                                <div class="error-message">Please enter your last name</div>
                             </div>
                         </div>
                     </div>
@@ -194,6 +207,7 @@
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                 <i class="fas fa-envelope text-white text-opacity-70"></i>
                             </div>
+                            <div class="error-message">Please enter your email</div>
                         </div>
                     </div>
                     
@@ -204,6 +218,7 @@
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <i class="fas fa-eye-slash text-white text-opacity-70 cursor-pointer toggle-password"></i>
                             </div>
+                            <div class="error-message">Please enter a password</div>
                         </div>
                     </div>
                     
@@ -292,6 +307,38 @@
             input.addEventListener('blur', function() {
                 this.parentElement.classList.remove('transform', 'scale-105');
             });
+        });
+
+        // Form validation
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            const inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
+            let isValid = true;
+            
+            // Reset all error states
+            document.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
+            document.querySelectorAll('.input-field').forEach(field => field.classList.remove('error-field'));
+            
+            // Validate each field
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error-field');
+                    const errorMsg = input.nextElementSibling.nextElementSibling; // Get the error message element
+                    if (errorMsg) errorMsg.style.display = 'block';
+                }
+            });
+            
+            // Validate terms checkbox
+            if (!this.querySelector('#terms').checked) {
+                isValid = false;
+                const termsLabel = this.querySelector('label[for="terms"]');
+                termsLabel.style.color = '#ff6b6b';
+                termsLabel.style.fontWeight = 'bold';
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+            }
         });
     </script>
 </body>
