@@ -1,26 +1,22 @@
-
-function submitForm() {
  
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+// Function to handle form submission and redirection
+function submitForm() {
+    // You can add validation or AJAX submission logic here
+    // For simplicity, let's just display an alert for now
+    alert('Form submitted!');
 
-   
-    if (email.trim() === '' || password.trim() === '') {
-     
-        alert('Please fill in all fields');
-    } else {
-       
-        alert('Form submitted successfully!');
-        window.location.href = 'home.html';
-    }
+    // Redirect to the main website
+    window.location.href = "home.html"; // Replace with your main website URL
 }
 
 // Get the form element
 const entryForm = document.getElementById('entryForm');
 
+// Add an event listener for form submission
 entryForm.addEventListener('submit', function(event) {
-
+    // Prevent the default form submission behavior
     event.preventDefault();
 
+    // Call the submitForm function to handle the form submission
     submitForm();
-});
+})
