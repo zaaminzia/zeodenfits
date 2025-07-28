@@ -68,6 +68,17 @@
             animation: pulse 2s infinite;
         }
 
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-field {
+            border-color: #ff6b6b !important;
+        }
+
         .image-slider {
             perspective: 1000px;
         }
@@ -163,26 +174,29 @@
                 </div>
                 
                 <h2 class="text-2xl font-semibold text-white mb-1">Create Account</h2>
-                <p class="text-white text-opacity-80 mb-6">Join our premium fitness community</p>
+                <p class="text-white text-opacity-80 mb-6">Join us today</p>
                 
                 <form id="signupForm" class="space-y-4" action="home.html" method="GET">
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
                             <label class="block text-white text-sm font-medium mb-1">First Name</label>
                             <div class="relative">
                                 <input type="text" class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-white placeholder-opacity-70 focus:outline-none" placeholder="John">
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <i class="fas fa-user text-white text-opacity-70"></i>
                                 </div>
+                                <div class="error-message">Please enter first name</div>
                             </div>
                         </div>
-                        <div class="w-1/2">
+                        <div>
                             <label class="block text-white text-sm font-medium mb-1">Last Name</label>
                             <div class="relative">
                                 <input type="text" class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-white placeholder-opacity-70 focus:outline-none" placeholder="Doe">
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                     <i class="fas fa-user text-white text-opacity-70"></i>
                                 </div>
+                                <div class="error-message">Please enter last name</div>
                             </div>
                         </div>
                     </div>
@@ -194,6 +208,7 @@
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                 <i class="fas fa-envelope text-white text-opacity-70"></i>
                             </div>
+                            <div class="error-message">Please enter your email</div>
                         </div>
                     </div>
                     
@@ -204,12 +219,8 @@
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <i class="fas fa-eye-slash text-white text-opacity-70 cursor-pointer toggle-password"></i>
                             </div>
+                            <div class="error-message">Please enter a password</div>
                         </div>
-                    </div>
-                    
-                    <div class="flex items-center">
-                        <input type="checkbox" id="terms" class="w-4 h-4 rounded bg-white bg-opacity-20 border-white border-opacity-50 focus:ring-blue-500">
-                        <label for="terms" class="ml-2 text-sm text-white text-opacity-80">I agree to the <a href="#" class="text-white font-medium hover:underline">Terms & Conditions</a></label>
                     </div>
                     
                     <button type="submit" class="w-full btn-primary text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline">
@@ -217,7 +228,7 @@
                     </button>
                     
                     <div class="text-center text-white text-opacity-80 text-sm">
-                        Already have an account? <a href="SignIn.html" class="text-white font-medium hover:underline">Log In</a>
+                        Already have an account? <a href="SignIn.html" class="text-white font-medium hover:underline">Sign In</a>
                     </div>
                 </form>
                 
@@ -299,24 +310,42 @@
             const inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
             let isValid = true;
             
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.parentElement.classList.add('animate-pulse');
-                    setTimeout(() => {
-                        input.parentElement.classList.remove('animate-pulse');
-                    }, 1000);
-                }
-            });
+            // Reset all error states
+            document.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
+            document.querySelectorAll('.input-field').forEach(field => field.classList.remove('error-field'));
             
-            if (!this.querySelector('#terms').checked) {
+            // Validate all fields
+            const firstName = this.querySelector('input[type="text"]');
+            const lastName = this.querySelectorAll('input[type="text"]')[1];
+            const email = this.querySelector('input[type="email"]');
+            const password = this.querySelector('input[type="password"]');
+            
+            if (!firstName.value.trim()) {
                 isValid = false;
-                alert('Please agree to the Terms & Conditions');
+                firstName.classList.add('error-field');
+                firstName.nextElementSibling.nextElementSibling.style.display = 'block';
+            }
+            
+            if (!lastName.value.trim()) {
+                isValid = false;
+                lastName.classList.add('error-field');
+                lastName.nextElementSibling.nextElementSibling.style.display = 'block';
+            }
+            
+            if (!email.value.trim()) {
+                isValid = false;
+                email.classList.add('error-field');
+                email.nextElementSibling.nextElementSibling.style.display = 'block';
+            }
+            
+            if (!password.value.trim()) {
+                isValid = false;
+                password.classList.add('error-field');
+                password.nextElementSibling.nextElementSibling.style.display = 'block';
             }
             
             if (!isValid) {
                 e.preventDefault();
-                alert('Please fill in all required fields');
             }
         });
     </script>
