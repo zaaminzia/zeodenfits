@@ -3,497 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZeodenFits | Premium Hoodies</title>
+    <title>Zeoden Fits | Sign Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
         }
         
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         }
         
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .input-field {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
         }
         
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+        .input-field:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.3);
         }
         
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
+        .btn-primary {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
         }
         
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-field {
+            border-color: #ff6b6b !important;
+        }
+
+        .image-slider {
+            perspective: 1000px;
+        }
+        
+        .slider-image {
+            transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 80%;
+            margin: 10%;
+            opacity: 1;
+            filter: none;
+        }
+        
+        .slider-image.active {
+            z-index: 3;
+            transform: translateY(0) scale(1) rotateY(0deg);
+        }
+        
+        .slider-image.next {
+            z-index: 2;
+            transform: translateX(20%) translateY(5%) scale(0.9) rotateY(15deg);
+        }
+        
+        .slider-image.prev {
+            z-index: 1;
+            transform: translateX(-20%) translateY(5%) scale(0.9) rotateY(-15deg);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#" class="text-xl font-bold text-gray-900 flex items-center">
-                        <i class="fas fa-tshirt text-indigo-600 mr-2"></i>
-                        ZeodenFits
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Home</a>
-                    <a href="#shop" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Shop</a>
-                    <a href="#about" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">About</a>
-                    <a href="#contact" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Contact</a>
-                    <div class="flex items-center space-x-4">
-                        <a href="#" class="text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span id="cart-count" class="bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center -mt-6 -mr-3">0</span>
-                        </a>
-                        <a href="SignIn.html" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition">Sign In</a>
-                        <a href="SignUp.html" class="border border-indigo-600 text-indigo-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-50 transition">Sign Up</a>
+<body>
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-purple-300 rounded-full filter blur-3xl opacity-20"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-400 rounded-full filter blur-3xl opacity-20"></div>
+        <div class="absolute top-1/3 right-1/4 w-40 h-40 bg-white rounded-full filter blur-3xl opacity-10"></div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-center gap-8 z-10">
+        <!-- Left Side - Illustration -->
+        <div class="w-full md:w-1/2 flex justify-center items-center">
+            <div class="relative w-full max-w-lg">
+                <div class="relative h-[500px] w-full image-slider">
+                    <!-- Image 1 -->
+                    <div class="slider-image active floating">
+                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1072&q=80" 
+                             alt="Premium Hoodie" 
+                             class="w-full h-full object-cover rounded-2xl glass-card border-2 border-white border-opacity-30 shadow-xl">
+                        <div class="absolute -bottom-4 -right-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md rounded-xl p-3 shadow-lg border border-white border-opacity-30">
+                            <div class="text-white font-bold text-lg">🔥 Limited Edition</div>
+                        </div>
                     </div>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-900 hover:text-indigo-600">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
+                    
+                    <!-- Image 2 -->
+                    <div class="slider-image next floating" style="animation-delay: 0.5s">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" 
+                             alt="Athletic Wear" 
+                             class="w-full h-full object-cover rounded-2xl glass-card border-2 border-white border-opacity-30 shadow-xl">
+                        <div class="absolute -bottom-4 -right-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md rounded-xl p-3 shadow-lg border border-white border-opacity-30">
+                            <div class="text-white font-bold text-lg">🏃 Performance Fit</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image 3 -->
+                    <div class="slider-image prev floating" style="animation-delay: 1s">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Streetwear Style" 
+                             class="w-full h-full object-cover rounded-2xl glass-card border-2 border-white border-opacity-30 shadow-xl">
+                        <div class="absolute -bottom-4 -right-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md rounded-xl p-3 shadow-lg border border-white border-opacity-30">
+                            <div class="text-white font-bold text-lg">👟 Urban Style</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Home</a>
-                <a href="#shop" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Shop</a>
-                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">About</a>
-                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">Contact</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-indigo-600">
-                    <i class="fas fa-shopping-cart mr-2"></i>Cart
-                </a>
-                <div class="pt-2 space-y-2">
-                    <a href="#" class="block w-full text-center bg-indigo-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-indigo-700 transition">Sign In</a>
-                    <a href="#" class="block w-full text-center border border-indigo-600 text-indigo-600 px-4 py-2 rounded-md text-base font-medium hover:bg-indigo-50 transition">Sign Up</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex items-center justify-between">
-                <div class="md:w-1/2 fade-in">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Premium Hoodies for Every Style</h1>
-                    <p class="text-xl mb-8">Discover our collection of high-quality, comfortable hoodies designed for everyday wear.</p>
-                    <a href="#shop" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 inline-block">
-                        Shop Now <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                <div class="md:w-1/2 mt-10 md:mt-0 fade-in" style="animation-delay: 0.3s;">
-                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Premium Hoodie" class="rounded-lg shadow-2xl transform hover:scale-105 transition duration-500">
-                </div>
-            </div>
-        </div>
-        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
-    </section>
-
-    <!-- Featured Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Our Hoodies</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center">
-                    <div class="text-indigo-600 text-4xl mb-4">
-                        <i class="fas fa-leaf"></i>
+        <!-- Right Side - Form -->
+        <div class="w-full md:w-1/2 max-w-md">
+            <div class="glass-card p-8 rounded-2xl">
+                <div class="flex items-center justify-center mb-8">
+                    <div class="bg-white bg-opacity-20 p-3 rounded-full mr-3 pulse">
+                        <i class="fas fa-hoodie text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Premium Materials</h3>
-                    <p class="text-gray-600">Made with 100% organic cotton for maximum comfort and durability.</p>
+                    <h1 class="text-3xl font-bold text-white">ZEODEN FITS</h1>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center">
-                    <div class="text-indigo-600 text-4xl mb-4">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Unique Designs</h3>
-                    <p class="text-gray-600">Exclusive prints and patterns you won't find anywhere else.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center">
-                    <div class="text-indigo-600 text-4xl mb-4">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Fast Shipping</h3>
-                    <p class="text-gray-600">Get your hoodie delivered within 3-5 business days.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shop Section -->
-    <section id="shop" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">Our Collection</h2>
-            
-            <!-- Filter Controls -->
-            <div class="flex flex-wrap justify-center mb-8 gap-4">
-                <button class="filter-btn px-4 py-2 rounded-full bg-indigo-600 text-white" data-filter="all">All</button>
-                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white transition" data-filter="men">Men</button>
-                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white transition" data-filter="women">Women</button>
-                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white transition" data-filter="unisex">Unisex</button>
-            </div>
-            
-            <!-- Product Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="product-grid">
-                <!-- Products will be loaded here via JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <img src="https://images.unsplash.com/photo-1607346256334-de84f9a5b1a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="About Us" class="rounded-lg shadow-lg">
-                </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <h2 class="text-3xl font-bold mb-6">Our Story</h2>
-                    <p class="text-gray-600 mb-4">Founded in 2020, UrbanThreads began with a simple mission: to create high-quality, comfortable hoodies that people love to wear every day.</p>
-                    <p class="text-gray-600 mb-6">We believe in ethical manufacturing, sustainable materials, and designs that stand the test of time. Each hoodie is crafted with care and attention to detail.</p>
-                    <div class="flex items-center">
-                        <div class="mr-4">
-                            <div class="text-indigo-600 text-3xl mb-2">
-                                <i class="fas fa-award"></i>
+                
+                <h2 class="text-2xl font-semibold text-white mb-1">Welcome Back</h2>
+                <p class="text-white text-opacity-80 mb-6">Sign in to your account</p>
+                
+                <form id="signupForm" class="space-y-4" action="home.html" method="GET">
+                    
+                    <div>
+                        <label class="block text-white text-sm font-medium mb-1">Email</label>
+                        <div class="relative">
+                            <input type="email" class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-white placeholder-opacity-70 focus:outline-none" placeholder="your@email.com">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-envelope text-white text-opacity-70"></i>
                             </div>
-                            <p class="font-semibold">Quality Guaranteed</p>
+                            <div class="error-message">Please enter your email</div>
                         </div>
-                        <div>
-                            <div class="text-indigo-600 text-3xl mb-2">
-                                <i class="fas fa-globe-americas"></i>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white text-sm font-medium mb-1">Password</label>
+                        <div class="relative">
+                            <input type="password" class="w-full px-4 py-3 rounded-lg input-field text-white placeholder-white placeholder-opacity-70 focus:outline-none" placeholder="••••••••">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-eye-slash text-white text-opacity-70 cursor-pointer toggle-password"></i>
                             </div>
-                            <p class="font-semibold">Worldwide Shipping</p>
+                            <div class="error-message">Please enter a password</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-16 bg-indigo-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-indigo-700 p-6 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="mb-4">"The most comfortable hoodie I've ever owned. The fabric is so soft and the fit is perfect!"</p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="w-10 h-10 rounded-full mr-3">
-                        <div>
-                            <p class="font-semibold">Sarah J.</p>
-                            <p class="text-indigo-200 text-sm">Verified Buyer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-indigo-700 p-6 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="mb-4">"Great quality and the design is even better in person. Will definitely be ordering more!"</p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Customer" class="w-10 h-10 rounded-full mr-3">
-                        <div>
-                            <p class="font-semibold">Michael T.</p>
-                            <p class="text-indigo-200 text-sm">Verified Buyer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-indigo-700 p-6 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                    <p class="mb-4">"Love the fit and style. The shipping was super fast too. Already planning my next purchase."</p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="w-10 h-10 rounded-full mr-3">
-                        <div>
-                            <p class="font-semibold">Jessica L.</p>
-                            <p class="text-indigo-200 text-sm">Verified Buyer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
-                    <p class="text-gray-600 mb-6">Have questions about our products or need assistance with your order? We're here to help!</p>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="text-indigo-600 mt-1 mr-4">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">Email Us</h3>
-                                <p class="text-gray-600">support@zeodenfits.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-indigo-600 mt-1 mr-4">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">Call Us</h3>
-                                <p class="text-gray-600">+1 (555) 123-4567</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-indigo-600 mt-1 mr-4">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">Visit Us</h3>
-                                <p class="text-gray-600">123 Hoodie Street, Fashion District, NY 10001</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <form class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
-                        </div>
-                        <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300 w-full">
-                            Send Message <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="py-12 bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl font-bold mb-4">Join Our Newsletter</h2>
-            <p class="text-gray-300 mb-6 max-w-2xl mx-auto">Subscribe to get updates on new arrivals, special offers, and exclusive discounts.</p>
-            <div class="max-w-md mx-auto flex">
-                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-gray-900">
-                <button class="bg-indigo-600 px-6 py-3 rounded-r-lg font-semibold hover:bg-indigo-700 transition duration-300">
-                    Subscribe <i class="fas fa-arrow-right ml-2"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fas fa-tshirt text-indigo-600 mr-2"></i>
-                        ZeodenFits
-                    </h3>
-                    <p class="text-gray-400">Elevate your style with premium hoodies. Performance meets fashion.</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Shop</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">All Hoodies</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Men's Collection</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Women's Collection</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Unisex Collection</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Help</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Track Order</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Terms & Conditions</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Refund Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 ZeodenFits. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Shopping Cart Modal -->
-    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="absolute right-0 top-0 h-full w-full md:w-1/2 lg:w-1/3 bg-white shadow-lg overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold">Your Cart</h2>
-                    <button id="close-cart" class="text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times text-xl"></i>
+                    
+                    <button type="submit" class="w-full btn-primary text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                        Sign In <i class="fas fa-arrow-right ml-2"></i>
                     </button>
-                </div>
-                <div id="cart-items" class="space-y-4">
-                    <!-- Cart items will be loaded here -->
-                    <p class="text-gray-500 text-center py-8" id="empty-cart-message">Your cart is empty</p>
-                </div>
-                <div class="border-t border-gray-200 mt-6 pt-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="text-gray-600">Subtotal</span>
-                        <span id="cart-subtotal" class="font-semibold">$0.00</span>
+                    
+                    <div class="text-center text-white text-opacity-80 text-sm">
+                        Don't have an account? <a href="#" class="text-white font-medium hover:underline">Sign Up</a>
                     </div>
-                    <div class="flex justify-between mb-4">
-                        <span class="text-gray-600">Shipping</span>
-                        <span class="font-semibold">Free</span>
-                    </div>
-                    <div class="flex justify-between text-lg font-bold">
-                        <span>Total</span>
-                        <span id="cart-total">$0.00</span>
-                    </div>
-                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg mt-6 hover:bg-indigo-700 transition duration-300">
-                        Checkout <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Product Quick View Modal -->
-    <div id="quick-view-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl w-11/12 max-w-4xl max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <button id="close-quick-view" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-                <div class="md:flex gap-8">
-                    <div class="md:w-1/2 mb-6 md:mb-0">
-                        <img id="quick-view-image" src="" alt="Product" class="w-full rounded-lg">
-                        <div class="grid grid-cols-4 gap-2 mt-4">
-                            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                 alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-indigo-500 rounded">
-                            <img src="https://images.unsplash.com/photo-1620799139834-6b8f844dbe6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                 alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-indigo-500 rounded">
-                            <img src="https://images.unsplash.com/photo-1620799139652-715ce0f6db83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                 alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-indigo-500 rounded">
-                            <img src="https://images.unsplash.com/photo-1620799139834-6b8f844dbe6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                 alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-indigo-500 rounded">
+                </form>
+                
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-white border-opacity-30"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-transparent text-white text-opacity-80">Or continue with</span>
                         </div>
                     </div>
-                    <div class="md:w-1/2">
-                        <h2 id="quick-view-title" class="text-2xl font-bold mb-2"></h2>
-                        <div class="flex items-center mb-4">
-                            <div class="text-yellow-400 mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="text-gray-600">(24 reviews)</span>
-                        </div>
-                        <p id="quick-view-price" class="text-2xl font-bold text-indigo-600 mb-4"></p>
-                        <p id="quick-view-description" class="text-gray-600 mb-6"></p>
-                        
-                        <div class="mb-6">
-                            <h3 class="font-semibold mb-2">Color</h3>
-                            <div class="flex space-x-2">
-                                <button class="w-8 h-8 rounded-full bg-black border-2 border-indigo-500"></button>
-                                <button class="w-8 h-8 rounded-full bg-gray-500 border-2 border-transparent hover:border-gray-300"></button>
-                                <button class="w-8 h-8 rounded-full bg-blue-500 border-2 border-transparent hover:border-gray-300"></button>
-                                <button class="w-8 h-8 rounded-full bg-red-500 border-2 border-transparent hover:border-gray-300"></button>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <h3 class="font-semibold mb-2">Size</h3>
-                            <div class="grid grid-cols-5 gap-2">
-                                <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:bg-indigo-100 focus:border-indigo-500">XS</button>
-                                <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:bg-indigo-100 focus:border-indigo-500">S</button>
-                                <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:bg-indigo-100 focus:border-indigo-500 bg-indigo-100 border-indigo-500">M</button>
-                                <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:bg-indigo-100 focus:border-indigo-500">L</button>
-                                <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:bg-indigo-100 focus:border-indigo-500">XL</button>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center mb-6">
-                            <div class="flex items-center border border-gray-300 rounded mr-4">
-                                <button class="px-3 py-1 text-xl">-</button>
-                                <span class="px-3 py-1 border-l border-r border-gray-300">1</span>
-                                <button class="px-3 py-1 text-xl">+</button>
-                            </div>
-                            <button id="add-to-cart-btn" class="flex-grow bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300">
-                                Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="border-t border-gray-200 pt-4">
-                            <div class="flex items-center mb-2">
-                                <i class="fas fa-truck text-indigo-600 mr-2"></i>
-                                <span class="text-gray-600">Free shipping on orders over $50</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-undo text-indigo-600 mr-2"></i>
-                                <span class="text-gray-600">Easy 30-day returns</span>
-                            </div>
-                        </div>
+                    
+                    <div class="mt-6 grid grid-cols-3 gap-3">
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-2 bg-white bg-opacity-10 rounded-lg text-white hover:bg-opacity-20 transition">
+                            <i class="fab fa-google text-xl"></i>
+                        </a>
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-2 bg-white bg-opacity-10 rounded-lg text-white hover:bg-opacity-20 transition">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-2 bg-white bg-opacity-10 rounded-lg text-white hover:bg-opacity-20 transition">
+                            <i class="fab fa-apple text-xl"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -501,380 +236,91 @@
     </div>
 
     <script>
-        // Sample product data
-        const products = [
-            {
-                id: 1,
-                title: "Classic Black Hoodie",
-                price: 49.99,
-                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "unisex",
-                description: "Our signature black hoodie made from premium organic cotton. Perfect for everyday wear."
-            },
-            {
-                id: 2,
-                title: "Urban Grey Zip-Up",
-                price: 59.99,
-                image: "https://images.unsplash.com/photo-1620799139834-6b8f844dbe6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "men",
-                description: "A sleek zip-up hoodie with a modern fit. Features a front pocket and adjustable drawstrings."
-            },
-            {
-                id: 3,
-                title: "Pastel Pink Hoodie",
-                price: 44.99,
-                image: "https://images.unsplash.com/photo-1620799139652-715ce0f6db83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "women",
-                description: "Soft pastel pink hoodie with a relaxed fit. Made from ultra-soft brushed cotton."
-            },
-            {
-                id: 4,
-                title: "Graphic Print Hoodie",
-                price: 54.99,
-                image: "https://images.unsplash.com/photo-1620799139828-fa4fbaa7f745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "unisex",
-                description: "Eye-catching graphic print hoodie with our exclusive artwork. Limited edition."
-            },
-            {
-                id: 5,
-                title: "Athletic Fit Hoodie",
-                price: 49.99,
-                image: "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "men",
-                description: "Performance hoodie designed for active lifestyles. Moisture-wicking and breathable."
-            },
-            {
-                id: 6,
-                title: "Oversized Cropped Hoodie",
-                price: 47.99,
-                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "women",
-                description: "Trendy oversized cropped hoodie with a cozy fleece lining. Perfect for layering."
-            },
-            {
-                id: 7,
-                title: "Heavyweight Hoodie",
-                price: 64.99,
-                image: "https://images.unsplash.com/photo-1620799139834-6b8f844dbe6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "unisex",
-                description: "Premium heavyweight hoodie for colder days. Features reinforced stitching for durability."
-            },
-            {
-                id: 8,
-                title: "Tie-Dye Hoodie",
-                price: 52.99,
-                image: "https://images.unsplash.com/photo-1620799139652-715ce0f6db83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                category: "women",
-                description: "Unique hand-dyed hoodie with vibrant colors. Each piece is one-of-a-kind."
-            }
-        ];
-
-        // Shopping cart
-        let cart = [];
-
-        // DOM elements
-        const productGrid = document.getElementById('product-grid');
-        const cartCount = document.getElementById('cart-count');
-        const cartModal = document.getElementById('cart-modal');
-        const closeCart = document.getElementById('close-cart');
-        const cartItems = document.getElementById('cart-items');
-        const cartSubtotal = document.getElementById('cart-subtotal');
-        const cartTotal = document.getElementById('cart-total');
-        const emptyCartMessage = document.getElementById('empty-cart-message');
-        const quickViewModal = document.getElementById('quick-view-modal');
-        const closeQuickView = document.getElementById('close-quick-view');
-        const quickViewImage = document.getElementById('quick-view-image');
-        const quickViewTitle = document.getElementById('quick-view-title');
-        const quickViewPrice = document.getElementById('quick-view-price');
-        const quickViewDescription = document.getElementById('quick-view-description');
-        const addToCartBtn = document.getElementById('add-to-cart-btn');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        // Current product for quick view
-        let currentProduct = null;
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            renderProducts(products);
-            setupEventListeners();
+        // Image slider functionality
+        function cycleImages() {
+            const images = document.querySelectorAll('.slider-image');
+            let activeIndex = 0;
+            
+            setInterval(() => {
+                images.forEach(img => img.classList.remove('active', 'next', 'prev'));
+                
+                activeIndex = (activeIndex + 1) % images.length;
+                const nextIndex = (activeIndex + 1) % images.length;
+                const prevIndex = (activeIndex - 1 + images.length) % images.length;
+                
+                images[activeIndex].classList.add('active');
+                images[nextIndex].classList.add('next');
+                images[prevIndex].classList.add('prev');
+            }, 4000);
+        }
+        
+        // Start the image cycling when page loads
+        document.addEventListener('DOMContentLoaded', cycleImages);
+        
+        // Toggle password visibility
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.parentElement.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.replace('fa-eye-slash', 'fa-eye');
+                } else {
+                    input.type = 'password';
+                    this.classList.replace('fa-eye', 'fa-eye-slash');
+                }
+            });
         });
 
-        // Render products to the grid
-        function renderProducts(productsToRender) {
-            productGrid.innerHTML = '';
-            
-            productsToRender.forEach(product => {
-                const productElement = document.createElement('div');
-                productElement.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300';
-                productElement.innerHTML = `
-                    <div class="relative">
-                        <img src="${product.image}" alt="${product.title}" class="w-full h-64 object-cover">
-                        <div class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">NEW</div>
-                        <button class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white text-indigo-600 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 quick-view-btn" data-id="${product.id}">
-                            Quick View
-                        </button>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-1">${product.title}</h3>
-                        <div class="flex items-center mb-2">
-                            <div class="text-yellow-400 mr-1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="text-gray-500 text-sm">(24)</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-indigo-600 font-bold">$${product.price.toFixed(2)}</span>
-                            <button class="text-gray-500 hover:text-indigo-600 add-to-cart" data-id="${product.id}">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                productGrid.appendChild(productElement);
+        // Add floating animation to form inputs on focus
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('transform', 'scale-105');
             });
             
-            // Reattach event listeners for new elements
-            document.querySelectorAll('.quick-view-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    showQuickView(productId);
-                });
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('transform', 'scale-105');
             });
-            
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    addToCart(productId);
-                });
-            });
-        }
+        });
 
-        // Filter products by category
-        function filterProducts(category) {
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                const filteredProducts = products.filter(product => product.category === category);
-                renderProducts(filteredProducts);
+        // Form validation
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            const inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
+            let isValid = true;
+            
+            // Reset all error states
+            document.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
+            document.querySelectorAll('.input-field').forEach(field => field.classList.remove('error-field'));
+            
+            // Validate email and password fields
+            const email = this.querySelector('input[type="email"]');
+            const password = this.querySelector('input[type="password"]');
+            
+            if (!email.value.trim()) {
+                isValid = false;
+                email.classList.add('error-field');
+                email.nextElementSibling.nextElementSibling.style.display = 'block';
+            } else if (email.value.trim() !== "zaamin@gmail.com") {
+                isValid = false;
+                email.classList.add('error-field');
+                email.nextElementSibling.nextElementSibling.textContent = "Invalid email";
+                email.nextElementSibling.nextElementSibling.style.display = 'block';
             }
-        }
-
-        // Show quick view modal
-        function showQuickView(productId) {
-            currentProduct = products.find(product => product.id === productId);
             
-            if (currentProduct) {
-                quickViewImage.src = currentProduct.image;
-                quickViewTitle.textContent = currentProduct.title;
-                quickViewPrice.textContent = `$${currentProduct.price.toFixed(2)}`;
-                quickViewDescription.textContent = currentProduct.description;
-                
-                quickViewModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+            if (!password.value.trim()) {
+                isValid = false;
+                password.classList.add('error-field');
+                password.nextElementSibling.nextElementSibling.style.display = 'block';
+            } else if (password.value.trim() !== "admin") {
+                isValid = false;
+                password.classList.add('error-field');
+                password.nextElementSibling.nextElementSibling.textContent = "Invalid password";
+                password.nextElementSibling.nextElementSibling.style.display = 'block';
             }
-        }
-
-        // Add product to cart
-        function addToCart(productId, quantity = 1) {
-            const product = products.find(p => p.id === productId);
             
-            if (product) {
-                const existingItem = cart.find(item => item.id === productId);
-                
-                if (existingItem) {
-                    existingItem.quantity += quantity;
-                } else {
-                    cart.push({
-                        id: product.id,
-                        title: product.title,
-                        price: product.price,
-                        image: product.image,
-                        quantity: quantity
-                    });
-                }
-                
-                updateCart();
-                
-                // Show a quick notification
-                const notification = document.createElement('div');
-                notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center';
-                notification.innerHTML = `
-                    <i class="fas fa-check-circle mr-2"></i>
-                    Added to cart!
-                `;
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.classList.add('opacity-0', 'transition', 'duration-300');
-                    setTimeout(() => notification.remove(), 300);
-                }, 2000);
-            }
-        }
-
-        // Update cart UI
-        function updateCart() {
-            // Update cart count
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-            
-            // Update cart modal if open
-            if (cart.length === 0) {
-                emptyCartMessage.classList.remove('hidden');
-                cartItems.innerHTML = '';
-            } else {
-                emptyCartMessage.classList.add('hidden');
-                
-                cartItems.innerHTML = '';
-                cart.forEach(item => {
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'flex border-b border-gray-200 pb-4';
-                    cartItem.innerHTML = `
-                        <div class="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden mr-4">
-                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-grow">
-                            <h3 class="font-semibold">${item.title}</h3>
-                            <p class="text-gray-600">$${item.price.toFixed(2)}</p>
-                            <div class="flex items-center mt-2">
-                                <button class="text-gray-500 hover:text-indigo-600 decrease-quantity" data-id="${item.id}">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span class="mx-2">${item.quantity}</span>
-                                <button class="text-gray-500 hover:text-indigo-600 increase-quantity" data-id="${item.id}">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-end">
-                            <p class="font-semibold">$${(item.price * item.quantity).toFixed(2)}</p>
-                            <button class="text-gray-500 hover:text-red-500 mt-2 remove-item" data-id="${item.id}">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                    cartItems.appendChild(cartItem);
-                });
-                
-                // Calculate totals
-                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-                cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-                cartTotal.textContent = `$${subtotal.toFixed(2)}`;
-                
-                // Attach event listeners to new buttons
-                document.querySelectorAll('.decrease-quantity').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const itemId = parseInt(this.getAttribute('data-id'));
-                        updateQuantity(itemId, -1);
-                    });
-                });
-                
-                document.querySelectorAll('.increase-quantity').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const itemId = parseInt(this.getAttribute('data-id'));
-                        updateQuantity(itemId, 1);
-                    });
-                });
-                
-                document.querySelectorAll('.remove-item').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const itemId = parseInt(this.getAttribute('data-id'));
-                        removeFromCart(itemId);
-                    });
-                });
-            }
-        }
-
-        // Update item quantity in cart
-        function updateQuantity(productId, change) {
-            const itemIndex = cart.findIndex(item => item.id === productId);
-            
-            if (itemIndex !== -1) {
-                cart[itemIndex].quantity += change;
-                
-                if (cart[itemIndex].quantity <= 0) {
-                    cart.splice(itemIndex, 1);
-                }
-                
-                updateCart();
-            }
-        }
-
-        // Remove item from cart
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCart();
-        }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Mobile menu toggle
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Filter buttons
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active button
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('bg-indigo-600', 'text-white');
-                        btn.classList.add('bg-gray-200', 'hover:bg-indigo-600', 'hover:text-white');
-                    });
-                    
-                    this.classList.add('bg-indigo-600', 'text-white');
-                    this.classList.remove('bg-gray-200', 'hover:bg-indigo-600', 'hover:text-white');
-                    
-                    // Filter products
-                    const category = this.getAttribute('data-filter');
-                    filterProducts(category);
-                });
-            });
-            
-            // Cart modal
-            document.querySelector('a[href="#"]:has(.fa-shopping-cart)').addEventListener('click', function(e) {
+            if (!isValid) {
                 e.preventDefault();
-                cartModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            closeCart.addEventListener('click', function() {
-                cartModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Quick view modal
-            addToCartBtn.addEventListener('click', function() {
-                if (currentProduct) {
-                    addToCart(currentProduct.id);
-                    quickViewModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            closeQuickView.addEventListener('click', function() {
-                quickViewModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Close modals when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target === cartModal) {
-                    cartModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
-                
-                if (e.target === quickViewModal) {
-                    quickViewModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
+            }
+        });
     </script>
 </body>
 </html>
